@@ -14,10 +14,11 @@ ${HOST_SRC_DIR}/Application.cpp
 ${HOST_SRC_DIR}/ENetHostObject.cpp)
 
 add_executable(ScreenSharerClient ${CLIENT_SRC_DIR}/main.cpp
-${CLIENT_SRC_DIR}/Application.cpp)
+${CLIENT_SRC_DIR}/Application.cpp
+${CLIENT_SRC_DIR}/ENetClientObject.cpp)
 
 set_target_properties(ScreenSharerHost PROPERTIES CXX_STANDARD 17)
 set_target_properties(ScreenSharerClient PROPERTIES CXX_STANDARD 17)
 
 target_link_libraries(ScreenSharerHost PRIVATE SDL2main SDL2 enet)
-target_link_libraries(ScreenSharerClient PRIVATE enet)
+target_link_libraries(ScreenSharerClient PRIVATE SDL2main SDL2 enet)

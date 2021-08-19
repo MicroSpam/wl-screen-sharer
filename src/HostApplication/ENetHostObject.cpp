@@ -18,7 +18,7 @@ ENetHostObject::ENetHostObject() {
     }
     
     printf("ENet server created.\n");
-    printf("Address: %s, Port: %d\n", m_address.host, m_address.port);
+    printf("Address: %x:%d\n", m_address.host, m_address.port);
     
 }
 
@@ -28,21 +28,21 @@ ENetHostObject::~ENetHostObject() {
     printf("Host destroyed.\n");
 }
 
-void ENetHostObject::ProcessEvents() {
-    while(enet_host_service(m_server, &m_event, 100) > 0) {
-        switch(m_event.type) {
+static void ENetHostObject::ProcessEvents(const ENetHostObject& object) {
+    while(enet_host_service(object.m_server, &(object.m_event), 100) > 0) {
+        switch(object.m_event.type) {
         case ENET_EVENT_TYPE_CONNECT:
-            printf("New client connected from %x, %u\n",
-                    event.peer->address.host,
-                    event.peer->address.port);
+            Utilities::printf_ts("New client connected from %x, %u\n",
+                                object.m_event.peer->address.host,
+                                object.m_event.peer->address.port);
             break;
         case ENET_EVENT_TYPE_RECEIVE:
-            printf("Packet received. size: %d\n", event.packet->dataLength);
+            Utilities::printf_ts("Packet received. size: %lu\n", object.m_event.packet->dataLength);
             break;
         case ENET_EVENT_TYPE_DISCONNECT:
-            printf("%x:%u disconnected.\n", 
-                    event.peer->address.host,
-                    event.peer->address.port);
+            Utilities::printf_ts("%x:%u disconnected.\n", 
+                                object.m_event.peer->address.host,
+                                object.m_event.peer->address.port);
             break;
         default:
         

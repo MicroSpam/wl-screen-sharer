@@ -1,8 +1,9 @@
-#include <iostream>
-#include <enet/enet.h>
+#include "Application.h"
+
 int main(int argc, char** argv) {
     
-    std::cout << "Client app" << std::endl;
+    Application app;
+    app.EventLoop();
     
     return 0;
 }

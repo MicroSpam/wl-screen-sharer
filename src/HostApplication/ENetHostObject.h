@@ -11,9 +11,11 @@ public:
     ENetHostObject();
     ~ENetHostObject();
     
+    static void ProcessEvents();
     
-private:
+
     ENetAddress m_address;
+    ENetEvent m_event;
     ENetHost* m_server;
 };
 

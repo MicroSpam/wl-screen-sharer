@@ -16,7 +16,9 @@ public:
     bool quit = false;    
 private:
     std::unique_ptr<HostClient> 	m_hostClient;
-    std::unique_ptr<ENetHostObject> 	m_enetHostObject;    
+    std::unique_ptr<ENetHostObject> 	m_enetHostObject;  
+
+    std::unique_ptr<std::thread> m_hostThread;  
 };
 
 #endif
