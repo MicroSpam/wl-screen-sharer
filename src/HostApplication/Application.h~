@@ -1,0 +1,22 @@
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
+#include "Common.h"
+#include "HostClient.h"
+#include "ENetHost.h"
+#include "ErrorHandler.h"
+
+class Application {
+public:
+    Application();
+    ~Application();
+    
+    void EventLoop();
+    
+    bool quit = false;    
+private:
+    std::unique_ptr<HostClient> 	m_hostClient;
+    std::unique_ptr<EnetHost> 		m_enetHost;    
+};
+
+#endif

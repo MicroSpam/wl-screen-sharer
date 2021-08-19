@@ -1,0 +1,20 @@
+#ifndef ENET_HOST_H
+#define ENET_HOST_H
+
+#include "Common.h"
+#include "ErrorHandler.h"
+
+#define DEFAULT_PORT 53641
+
+class EnetHost {
+public:
+    ENetHost();
+    ~ENetHost();
+    
+    
+private:
+    ENetAddress m_address;
+    ENetHost* m_server;
+};
+
+#endif
